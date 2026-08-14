@@ -1,0 +1,24 @@
+1:"$Sreact.fragment"
+2:I[8500,["500","static/chunks/500-b13bb91f5a6311b6.js","447","static/chunks/447-3893d6c56ca47ec3.js","386","static/chunks/386-3111ce2e84068d3b.js","974","static/chunks/app/page-9dd0592fe2d9da08.js"],""]
+3:I[484,[],"OutletBoundary"]
+4:"$Sreact.suspense"
+8:I[484,[],"ViewportBoundary"]
+9:I[484,[],"MetadataBoundary"]
+a:I[6869,[],"IconMark"]
+c:I[7121,[],""]
+d:I[4581,[],""]
+10:I[7460,["39","static/chunks/app/error-4af4bb7c7bf68e60.js"],"default"]
+:HL["/_next/static/css/b543b629d5ae2ddd.css","style"]
+7:X
+f:X
+f:C
+0:{"buildId":"Batw4PmLpAVj3EeZ9ZsAQ","data":[{"rsc":["$","$1","c",{"children":[["$","main",null,{"className":"nextra-status","children":[["$","span",null,{"aria-hidden":"true","className":"nextra-status-rule"}],["$","h1",null,{"children":"此页待续"}],["$","p",null,{"children":"内容暂未收录，或仍在整理。"}],["$","nav",null,{"aria-label":"页面导航","children":["$","$L2",null,{"href":"/","children":"返回主页"}]}]]}],null,["$","$L3",null,{"children":["$","$4",null,{"name":"Next.MetadataOutlet","children":"$@5"}]}]]}],"isPartial":"$@6","staleTime":"$7","varyParams":null},{"rsc":["$","$1","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L8",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","div",null,{"hidden":true,"children":["$","$L9",null,{"children":["$","$4",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"黑白之外｜对立之间，追问真相"}],["$","meta","1",{"name":"description","content":"对立之间，追问真相。"}],["$","link","2",{"rel":"icon","href":"/favicon.ico?35bc78bd4742ed0d","type":"image/x-icon","sizes":"16x16"}],["$","link","3",{"rel":"icon","href":"/icon.png?007420cede14fcf5","type":"image/png","sizes":"512x512"}],["$","$La","4",{}]]}]}]}],null]}],"isPartial":"$@b","staleTime":"$7","varyParams":null},{"rsc":["$","$1","c",{"children":[null,["$","$Lc",null,{"parallelRouterKey":"children","template":["$","$Ld",null,{}]}]]}],"isPartial":"$@e","staleTime":"$7","varyParams":"$f"},{"rsc":["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/b543b629d5ae2ddd.css","precedence":"next"}]],["$","html",null,{"dir":"ltr","lang":"zh-CN","children":[["$","head",null,{"children":["$undefined",["$","style",null,{"children":":root {\n  --nextra-primary-hue: 212deg;\n  --nextra-primary-saturation: 100%;\n  --nextra-primary-lightness: 45%;\n  --nextra-bg: 255,255,255;\n  --nextra-content-width: 90rem;\n}\n.dark {\n  --nextra-primary-hue: 204deg;\n  --nextra-primary-saturation: 100%;\n  --nextra-primary-lightness: 55%;\n  --nextra-bg: 255,255,255;\n}\n::selection {\n  background: hsla(var(--nextra-primary-hue),var(--nextra-primary-saturation),var(--nextra-primary-lightness),.3);\n}\nhtml {\n  background: rgb(var(--nextra-bg));\n}"}],["$","meta",null,{"name":"theme-color","media":"(prefers-color-scheme: light)","content":"rgb(255,255,255)"}],["$","meta",null,{"name":"theme-color","media":"(prefers-color-scheme: dark)","content":"rgb(255,255,255)"}],"$undefined"]}],["$","body",null,{"children":["$","$Lc",null,{"parallelRouterKey":"children","error":"$10","errorStyles":[],"errorScripts":null,"template":["$","$Ld",null,{}],"notFound":[["$","main",null,{"className":"nextra-status","children":[["$","span",null,{"aria-hidden":"true","className":"nextra-status-rule"}],["$","h1",null,{"children":"此页待续"}],["$","p",null,{"children":"内容暂未收录，或仍在整理。"}],["$","nav",null,{"aria-label":"页面导航","children":["$","$L2",null,{"href":"/","children":"返回主页"}]}]]}],[]]}]}]]}]]}],"isPartial":"$@11","staleTime":"$7","varyParams":null}],"isUpgradeableISRFallback":false,"a":"$@12","rootVaryParams":null,"needsRuntimeRequest":"$@13"}
+5:null
+7:300
+13:true
+7:C
+12:0
+b:"$undefined"
+e:"$undefined"
+11:"$undefined"
+6:"$undefined"

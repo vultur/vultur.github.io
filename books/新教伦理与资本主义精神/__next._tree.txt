@@ -1,0 +1,2 @@
+:HL["/_next/static/css/b543b629d5ae2ddd.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":4176,"slots":{"children":{"name":"books","param":null,"prefetchHints":4192,"slots":{"children":{"name":"mdxPath","param":{"type":"oc","key":"%E6%96%B0%E6%95%99%E4%BC%A6%E7%90%86%E4%B8%8E%E8%B5%84%E6%9C%AC%E4%B8%BB%E4%B9%89%E7%B2%BE%E7%A5%9E","siblings":[]},"prefetchHints":4192,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":4256,"slots":null}}}}}}},"staleTime":300,"buildId":"Batw4PmLpAVj3EeZ9ZsAQ"}
