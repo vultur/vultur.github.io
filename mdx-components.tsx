@@ -42,6 +42,13 @@ type PageMetadata = {
     toc?: boolean;
 };
 
+function hasBody(sourceCode: string) {
+    const withoutFrontMatter = sourceCode.replace(/^---\r?\n[\s\S]*?\r?\n---(?:\r?\n|$)/, "");
+    const withoutTitle = withoutFrontMatter.replace(/^\s*#(?!#)[^\r\n]*(?:\r?\n|$)/, "");
+
+    return withoutTitle.trim().length > 0;
+}
+
 function MdxAnchor({ children, href = "", ...props }: ComponentPropsWithoutRef<"a">) {
     const isExternal = typeof href === "string" && /^(?:https?:)?\/\//.test(href);
 
@@ -96,7 +103,7 @@ const Blockquote = withGitHubAlert(({ type, children }) => {
     );
 });
 
-const ContentWrapper: MDXWrapper = ({ children, metadata, toc }) => {
+const ContentWrapper: MDXWrapper = ({ children, metadata, sourceCode, toc }) => {
     const page = metadata as PageMetadata;
     const authors = normalizeAuthors(page.authors);
     const isPublication = Boolean(page.published);
@@ -105,11 +112,9 @@ const ContentWrapper: MDXWrapper = ({ children, metadata, toc }) => {
     const title = page.title;
     const cover = isPublication && hasCover && title ? `/images/books/${title}.svg` : undefined;
     const portrait = hasPortrait ? portraitFor(authors[0]?.name, cover) : undefined;
-    const content = Children.toArray(children);
     const headings = toc.filter((heading) => heading.depth === 2);
     const showToc = page.toc !== false && headings.length >= 3;
-    const hasNoBody = toc.length === 0 && content.length === 1;
-    const isEmpty = isPublication && hasNoBody;
+    const isEmpty = isPublication && !hasBody(sourceCode);
     const className = [
         "nextra-content",
         "is-reading",
