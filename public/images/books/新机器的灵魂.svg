@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+<rect width="600" height="800" fill="#e4e1e6"/>
+<rect x="34" y="34" width="532" height="732" fill="none" stroke="#27232a" stroke-opacity=".2"/>
+<path d="M86 164h428M86 692h428" stroke="#6d5d79" stroke-width="3"/>
+<path d="M270 126l30-28 30 28M282 126l18-16 18 16" fill="none" stroke="#6d5d79" stroke-width="2" stroke-opacity=".58"/>
+<g fill="#27232a" font-family="Songti SC, Noto Serif CJK SC, serif" font-size="76" letter-spacing="4">
+    <text x="300" y="286" text-anchor="middle">新机器的</text>
+    <text x="300" y="390" text-anchor="middle">灵魂</text>
+</g>
+<text x="300" y="648" fill="#27232a" fill-opacity=".72" font-family="Songti SC, Noto Serif CJK SC, serif" font-size="25" text-anchor="middle" letter-spacing="2">崔西·基德尔</text>
+</svg>
