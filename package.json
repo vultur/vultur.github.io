@@ -1,0 +1,42 @@
+{
+    "name": "website",
+    "private": true,
+    "description": "黑夜给了我黑色的眼睛，我却用它寻找光明。",
+    "author": "vultur",
+    "repository": "https://github.com/vultur/website",
+    "type": "module",
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build --webpack",
+        "prepare": "husky"
+    },
+    "dependencies": {
+        "html-to-image": "^1.11.13",
+        "next": "16.3.0",
+        "nextra": "4.6.1",
+        "react": "19.2.8",
+        "react-dom": "19.2.8"
+    },
+    "devDependencies": {
+        "@tailwindcss/postcss": "4.3.3",
+        "@types/node": "26.2.0",
+        "@types/react": "19.2.18",
+        "@types/react-dom": "19.2.4",
+        "husky": "9.1.7",
+        "lint-staged": "17.3.0",
+        "oxfmt": "0.63.0",
+        "oxlint": "1.78.0",
+        "oxlint-tsgolint": "7.0.2001",
+        "postcss": "8.5.26",
+        "tailwindcss": "4.3.3",
+        "typescript": "5.9.3"
+    },
+    "lint-staged": {
+        "*": "oxfmt --no-error-on-unmatched-pattern",
+        "*.{js,jsx,ts,tsx,mjs,cjs}": "oxlint --fix"
+    },
+    "engines": {
+        "node": ">=22.11.0",
+        "npm": ">=10.9.0"
+    }
+}

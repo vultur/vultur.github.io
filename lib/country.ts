@@ -1,0 +1,32 @@
+const countryNames: Record<string, string> = {
+    中国: "中",
+    丹麦: "丹",
+    俄罗斯: "俄",
+    加拿大: "加",
+    古希腊: "古希腊",
+    古罗马: "古罗马",
+    南非: "南非",
+    印度: "印",
+    墨西哥: "墨",
+    奥地利: "奥",
+    德国: "德",
+    意大利: "意",
+    以色列: "以",
+    日本: "日",
+    法国: "法",
+    波兰: "波",
+    瑞典: "瑞",
+    瑞士: "瑞士",
+    荷兰: "荷",
+    美国: "美",
+    英国: "英",
+    葡萄牙: "葡",
+    叙利亚: "叙",
+    阿根廷: "阿",
+    韩国: "韩",
+    黎巴嫩: "黎",
+};
+
+export function countryLabel(country: string | undefined) {
+    return country ? (countryNames[country] ?? country) : "未知";
+}
