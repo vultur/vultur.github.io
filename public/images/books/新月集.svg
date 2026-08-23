@@ -1,8 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
-<rect width="600" height="800" fill="#e9e4dc"/>
-<rect x="34" y="34" width="532" height="732" fill="none" stroke="#27231f" stroke-opacity=".22"/>
-<path d="M86 108h428M86 692h428" stroke="#78613f" stroke-width="3"/>
-<g fill="#27231f" font-family="Songti SC, Noto Serif CJK SC, serif" font-size="84" letter-spacing="4"><text x="300" y="330" text-anchor="middle">新月集</text></g>
-<text x="300" y="648" fill="#27231f" fill-opacity=".72" font-family="Songti SC, Noto Serif CJK SC, serif" font-size="25" text-anchor="middle" letter-spacing="3">拉宾德拉纳特·泰戈尔</text>
-<circle cx="300" cy="114" r="8" fill="#78613f"/>
-</svg>
