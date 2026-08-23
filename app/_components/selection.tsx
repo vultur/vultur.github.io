@@ -3,7 +3,6 @@
 import { toBlob } from "html-to-image";
 import {
     useEffect,
-    useMemo,
     useRef,
     useState,
     type KeyboardEvent,
@@ -13,7 +12,7 @@ import {
 import { createPortal } from "react-dom";
 
 import { parseSelection, type Excerpt } from "./excerpt";
-import { ShareCard, ShareCardPreview, type ShareAuthor, type ShareData } from "./share";
+import { shareCardBackground, ShareCard, ShareCardPreview, type ShareAuthor } from "./share";
 
 type SelectionActionsProps = {
     authors: ShareAuthor[];
@@ -59,18 +58,14 @@ export function SelectionActions({ authors, portrait, title }: SelectionActionsP
     const [mounted, setMounted] = useState(false);
     const [saving, setSaving] = useState(false);
 
-    const cards = useMemo<ShareData[]>(
-        () =>
-            pages.map((page, index) => ({
-                authors,
-                page,
-                pageCount: pages.length,
-                pageNumber: index + 1,
-                portrait,
-                title,
-            })),
-        [authors, pages, portrait, title],
-    );
+    const cards = pages.map((page, index) => ({
+        authors,
+        page,
+        pageCount: pages.length,
+        pageNumber: index + 1,
+        portrait,
+        title,
+    }));
 
     useEffect(() => setMounted(true), []);
 
@@ -212,7 +207,7 @@ export function SelectionActions({ authors, portrait, title }: SelectionActionsP
                 exportRefs.current.slice(0, cards.length).map(async (node, index) => {
                     if (!node) throw new Error(`Missing export card ${index + 1}`);
                     const blob = await toBlob(node, {
-                        backgroundColor: "#f4f3ef",
+                        backgroundColor: shareCardBackground,
                         cacheBust: true,
                         height: 960,
                         pixelRatio: 2,

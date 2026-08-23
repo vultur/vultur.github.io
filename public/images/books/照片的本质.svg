@@ -1,1 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800"><rect width="600" height="800" fill="#e5e0d5"/><rect x="95" y="110" width="410" height="410" fill="none" stroke="#282723" stroke-width="4"/><rect x="175" y="190" width="250" height="250" fill="#8e9a93"/><text x="300" y="650" text-anchor="middle" font-family="serif" font-size="64" fill="#282723">照片的本质</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+<rect width="600" height="800" fill="#ece9e1"/>
+<rect x="34" y="34" width="532" height="732" fill="none" stroke="#242320" stroke-opacity=".22"/>
+<path d="M86 108h428M86 692h428" stroke="#a53a2b" stroke-width="3"/>
+<g fill="#242320" font-family="Songti SC, Noto Serif CJK SC, serif" font-size="84" letter-spacing="4">
+<text x="300" y="360" text-anchor="middle">照片的本质</text>
+</g>
+<text x="300" y="648" fill="#242320" fill-opacity=".72" font-family="Songti SC, Noto Serif CJK SC, serif" font-size="25" text-anchor="middle" letter-spacing="3">斯蒂芬·肖尔</text>
+<circle cx="300" cy="114" r="8" fill="#a53a2b"/>
+</svg>

@@ -19,6 +19,8 @@ export type ShareData = {
     title: string;
 };
 
+export const shareCardBackground = "#f4f3ef";
+
 export function ShareCard({
     data,
     ref,

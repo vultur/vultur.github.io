@@ -61,7 +61,7 @@ export function Timeline({ months }: { months: TimelineEntries }) {
                                                 <Link href={`/${book.name}`}>
                                                     <Image
                                                         alt={`${book.name}封面`}
-                                                        height={90}
+                                                        height={96}
                                                         src={book.image}
                                                         width={72}
                                                     />

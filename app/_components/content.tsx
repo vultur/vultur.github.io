@@ -6,7 +6,7 @@ import { useEffect, useRef, type PointerEvent } from "react";
 
 type Entry = {
     name: string;
-    image: string;
+    image?: string;
 };
 
 type ContentProps = {
@@ -176,7 +176,18 @@ function IndexRail({ entries, type }: { entries: Entry[]; type: "author" | "book
                         }
                     >
                         <span aria-hidden="true" className="nextra-home-preview">
-                            <Image alt="" width={72} height={90} src={entry.image} />
+                            {entry.image ? (
+                                <Image
+                                    alt=""
+                                    height={isBook ? 96 : 90}
+                                    src={entry.image}
+                                    width={72}
+                                />
+                            ) : (
+                                <span className="nextra-home-preview-placeholder">
+                                    {Array.from(entry.name)[0]}
+                                </span>
+                            )}
                             <span>{label}</span>
                         </span>
                     </Link>

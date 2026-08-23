@@ -4,6 +4,7 @@ import path from "node:path";
 import type { MdxFile } from "nextra";
 import { getPageMap } from "nextra/page-map";
 
+import { portraitPath } from "./assets";
 import { getTimestamps } from "./timestamp";
 
 const collator = new Intl.Collator("zh-CN-u-co-pinyin");
@@ -15,12 +16,14 @@ const monthFormatter = new Intl.DateTimeFormat("en-CA", {
 });
 
 type Author = {
-    image: string;
+    image?: string;
     name: string;
 };
 
-type Book = Author & {
+type Book = {
     authors: ContentAuthor[];
+    image: string;
+    name: string;
     published: number;
     timestamp?: number;
 };
@@ -68,7 +71,7 @@ export async function getAuthors(): Promise<Author[]> {
             const title = frontMatter?.title ?? name;
 
             return {
-                image: `/images/authors/${title}.jpg`,
+                image: portraitPath(title),
                 name: title,
             };
         })

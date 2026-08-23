@@ -12,6 +12,7 @@ import { SelectionActions } from "./app/_components/selection";
 import { ReadingTitle } from "./app/_components/title";
 import { ReadingToc } from "./app/_components/toc";
 import { BackToTop } from "./app/_components/top";
+import { portraitPath } from "./lib/assets";
 import { countryLabel } from "./lib/country";
 
 const alertLabels = {
@@ -87,11 +88,6 @@ function normalizeAuthors(value: unknown) {
     return authors.length > 0 ? authors : [{ name: "佚名" }];
 }
 
-function portraitFor(name: string | undefined, fallback: string | undefined) {
-    if (!name || name === "佚名") return fallback;
-    return `/images/authors/${name}.jpg`;
-}
-
 const Blockquote = withGitHubAlert(({ type, children }) => {
     const content = Children.toArray(children).slice(1) as ReactNode[];
 
@@ -111,7 +107,8 @@ const ContentWrapper: MDXWrapper = ({ children, metadata, sourceCode, toc }) => 
     const hasCover = page.cover !== false;
     const title = page.title;
     const cover = isPublication && hasCover && title ? `/images/books/${title}.svg` : undefined;
-    const portrait = hasPortrait ? portraitFor(authors[0]?.name, cover) : undefined;
+    const authorPortrait = portraitPath(authors[0]?.name);
+    const portrait = hasPortrait ? (authorPortrait ?? cover) : undefined;
     const headings = toc.filter((heading) => heading.depth === 2);
     const showToc = page.toc !== false && headings.length >= 3;
     const isEmpty = isPublication && !hasBody(sourceCode);
@@ -150,7 +147,7 @@ const ContentWrapper: MDXWrapper = ({ children, metadata, sourceCode, toc }) => 
                             <Image
                                 alt={`${title}封面`}
                                 className="nextra-reading-cover"
-                                height={90}
+                                height={96}
                                 src={cover}
                                 width={72}
                             />
@@ -198,7 +195,7 @@ const ContentWrapper: MDXWrapper = ({ children, metadata, sourceCode, toc }) => 
                         country: countryLabel(country),
                         name,
                     }))}
-                    portrait={hasPortrait ? portraitFor(authors[0]?.name, undefined) : undefined}
+                    portrait={hasPortrait ? authorPortrait : undefined}
                     title={title}
                 />
             )}

@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 :root {
+    color-scheme: light;
     --canvas: #fff;
     --paper: #f7f6f2;
     --plate-paper: #fbfaf7;
@@ -99,7 +100,7 @@ body:has(> .nextra-home) {
 a {
     color: inherit;
     text-underline-offset: 0.2em;
-    -webkit-tap-highlight-color: rgb(27 26 24 / 12%);
+    -webkit-tap-highlight-color: color-mix(in srgb, var(--ink) 12%, transparent);
 }
 
 :is(a, button):focus-visible {
@@ -116,6 +117,28 @@ a {
     background: var(--paper);
     aspect-ratio: 1.57;
     width: var(--home-width);
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        color-scheme: dark;
+        --canvas: #111;
+        --paper: #1a1a1a;
+        --plate-paper: #222;
+        --ink: #e7e7e7;
+        --reading-ink: #d7d7d7;
+        --muted: #a5a5a5;
+        --hairline: #343434;
+        --spine-line: #585858;
+    }
+
+    body:has(> .nextra-home) {
+        background: var(--plate-paper);
+    }
+
+    .nextra-home {
+        background: var(--canvas);
+    }
 }
 
 .nextra-home-epigraph {
@@ -501,17 +524,31 @@ a {
     transform: translateY(var(--preview-offset, 0));
 }
 
-.nextra-home-preview > img {
+.nextra-home-preview > img,
+.nextra-home-preview-placeholder {
     width: 4.5rem;
     height: 5.625rem;
     border: 1px solid var(--hairline);
     background: var(--paper);
+}
+
+.nextra-home-preview > img {
     filter: grayscale(1) sepia(0.08) contrast(0.86) brightness(1.04);
     object-fit: cover;
 }
 
 .nextra-home-control.is-book .nextra-home-preview > img {
+    height: 6rem;
     filter: none;
+    object-fit: contain;
+}
+
+.nextra-home-preview-placeholder {
+    display: grid;
+    place-items: center;
+    color: var(--muted);
+    font-size: 1.35rem;
+    font-family: var(--serif);
 }
 
 .nextra-content {
@@ -1401,7 +1438,7 @@ a {
     inset: 0;
     cursor: zoom-out;
     border: 0;
-    background: rgb(255 255 255 / 72%);
+    background: color-mix(in srgb, var(--canvas) 72%, transparent);
     padding: 0;
     backdrop-filter: blur(1rem) saturate(0.85);
 }
@@ -1575,6 +1612,11 @@ a {
 }
 
 .nextra-share-dialog {
+    --share-paper: #f4f3ef;
+    --share-ink: #24221f;
+    --share-muted: rgb(36 34 31 / 48%);
+    --share-line: rgb(36 34 31 / 16%);
+
     position: fixed;
     z-index: 10;
     inset: 0;
@@ -1590,7 +1632,7 @@ a {
     max-width: none;
     height: 100%;
     max-height: none;
-    color: var(--ink);
+    color: var(--share-ink);
     overscroll-behavior: contain;
 }
 
@@ -1616,7 +1658,7 @@ a {
 .nextra-share-layout {
     position: relative;
     z-index: 1;
-    background: #f4f3ef;
+    background: var(--share-paper);
     width: min(calc(86dvh * 9 / 16), 29.25rem, calc(100vw - 2rem));
     height: min(86dvh, 52rem, calc((100vw - 2rem) * 16 / 9));
     box-shadow:
@@ -1640,14 +1682,14 @@ a {
 }
 
 .nextra-share-button {
-    color: var(--muted);
+    color: var(--share-muted);
     transition:
         color 160ms ease,
         transform 160ms ease;
 }
 
 .nextra-share-download {
-    color: rgb(36 34 31 / 48%);
+    color: var(--share-muted);
 }
 
 .nextra-share-button.nextra-share-download:is(:hover, :focus-visible) {
@@ -1667,8 +1709,8 @@ a {
 }
 
 .nextra-share-button:is(:hover, :focus-visible) {
-    background: color-mix(in srgb, var(--canvas) 90%, transparent);
-    color: var(--ink);
+    background: rgb(255 255 255 / 72%);
+    color: var(--share-ink);
 }
 
 .nextra-share-button:focus-visible {
@@ -1698,7 +1740,7 @@ a {
     overflow: hidden;
     aspect-ratio: 9 / 16;
     width: 100%;
-    background: #f4f3ef;
+    background: var(--share-paper);
 }
 
 .nextra-share-scale {
@@ -1717,8 +1759,8 @@ a {
     overflow: hidden;
     width: 540px;
     height: 960px;
-    background: #f4f3ef;
-    color: #24221f;
+    background: var(--share-paper);
+    color: var(--share-ink);
     font-family: var(--serif);
 }
 
@@ -1732,7 +1774,7 @@ a {
     align-items: baseline;
     justify-content: space-between;
     gap: 32px;
-    border-bottom: 1px solid rgb(36 34 31 / 16%);
+    border-bottom: 1px solid var(--share-line);
     padding-bottom: 16px;
 }
 
@@ -1756,7 +1798,7 @@ a {
 }
 
 .nextra-share-source p:last-child {
-    color: var(--muted);
+    color: var(--share-muted);
     font-size: 10px;
     font-family: var(--sans);
     text-align: right;
@@ -1764,7 +1806,7 @@ a {
 
 .nextra-share-country {
     margin-right: 0.35em;
-    color: var(--spine-line);
+    color: var(--share-muted);
 }
 
 .nextra-share-content {
@@ -2128,6 +2170,11 @@ a {
         transition:
             opacity 180ms ease,
             filter 180ms ease;
+    }
+
+    .nextra-reading-meta .nextra-reading-cover {
+        aspect-ratio: 3 / 4;
+        object-fit: contain;
     }
 
     .nextra-reading-cover {
@@ -2613,11 +2660,11 @@ a {
     display: block;
     width: 3rem;
     height: auto;
-    aspect-ratio: 4 / 5;
+    aspect-ratio: 3 / 4;
     border: 1px solid var(--hairline);
     background: var(--paper);
     filter: grayscale(1) sepia(0.08) contrast(0.86) brightness(1.04);
-    object-fit: cover;
+    object-fit: contain;
     transition:
         border-color 160ms ease,
         box-shadow 160ms ease,

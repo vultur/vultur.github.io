@@ -1,1 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800"><rect width="600" height="800" fill="#eee9de"/><rect x="90" y="95" width="420" height="460" fill="#faf8f2" stroke="#2d2c28" stroke-width="3"/><path d="M130 470 250 310l75 90 60-65 85 135Z" fill="#77766f"/><text x="300" y="680" text-anchor="middle" font-family="serif" font-size="82" fill="#2d2c28">照片</text></svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="800" viewBox="0 0 600 800">
+<rect width="600" height="800" fill="#e4e6e3"/>
+<rect x="34" y="34" width="532" height="732" fill="none" stroke="#202624" stroke-opacity=".22"/>
+<path d="M86 108h428M86 692h428" stroke="#446b63" stroke-width="3"/>
+<g fill="#202624" font-family="Songti SC, Noto Serif CJK SC, serif" font-size="84" letter-spacing="4">
+<text x="300" y="360" text-anchor="middle">照片</text>
+</g>
+<text x="300" y="648" fill="#202624" fill-opacity=".72" font-family="Songti SC, Noto Serif CJK SC, serif" font-size="25" text-anchor="middle" letter-spacing="3">安塞尔·亚当斯</text>
+<circle cx="300" cy="114" r="8" fill="#446b63"/>
+</svg>
