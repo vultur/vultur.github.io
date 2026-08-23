@@ -62,13 +62,14 @@
 }
 
 html {
+    background-color: #fff;
     text-size-adjust: 100%;
 }
 
 body {
     margin: 0;
     min-height: 100dvh;
-    background: var(--canvas);
+    background-color: #fff;
     color: var(--ink);
     font-family: var(--serif);
     font-kerning: normal;
@@ -132,8 +133,14 @@ a {
         --spine-line: #585858;
     }
 
+    html,
+    body {
+        background-color: #111 !important;
+    }
+
+    html:has(body > .nextra-home),
     body:has(> .nextra-home) {
-        background: var(--plate-paper);
+        background-color: var(--plate-paper) !important;
     }
 
     .nextra-home {
