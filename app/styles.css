@@ -1572,11 +1572,14 @@ a {
 }
 
 .nextra-selection {
+    --selection-foreground: var(--canvas);
+    --selection-surface: var(--ink);
+
     position: fixed;
     z-index: 30;
     display: grid;
     justify-items: center;
-    color: var(--paper);
+    color: var(--selection-foreground);
     font-family: var(--sans);
     transform: translate(-50%, calc(-100% - 0.55rem));
 }
@@ -1584,9 +1587,9 @@ a {
 .nextra-selection > div {
     display: flex;
     align-items: center;
-    border: 1px solid color-mix(in srgb, var(--paper) 24%, transparent);
+    border: 1px solid color-mix(in srgb, var(--selection-foreground) 24%, transparent);
     border-radius: 0.22rem;
-    background: var(--ink);
+    background: var(--selection-surface);
     padding: 2px;
     box-shadow: 0 0.45rem 1.2rem rgb(27 26 24 / 17%);
 }
@@ -1607,8 +1610,12 @@ a {
 }
 
 .nextra-selection button:is(:hover, :focus-visible) {
-    background: rgb(247 246 242 / 10%);
-    color: #fff;
+    background: color-mix(in srgb, var(--selection-foreground) 10%, transparent);
+    color: var(--selection-foreground);
+}
+
+.nextra-selection button:active {
+    background: color-mix(in srgb, var(--selection-foreground) 18%, transparent);
 }
 
 .nextra-selection button:focus-visible {
@@ -1619,7 +1626,7 @@ a {
 .nextra-selection > div > span {
     width: 1px;
     height: 0.8rem;
-    background: color-mix(in srgb, var(--paper) 32%, transparent);
+    background: color-mix(in srgb, var(--selection-foreground) 32%, transparent);
 }
 
 .nextra-share-dialog {

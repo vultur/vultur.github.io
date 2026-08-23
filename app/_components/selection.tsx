@@ -108,7 +108,7 @@ export function SelectionActions({ authors, portrait, title }: SelectionActionsP
 
                 setToolbar({
                     text,
-                    x: Math.min(window.innerWidth - 12, Math.max(12, rect.left + rect.width / 2)),
+                    x: Math.min(window.innerWidth - 48, Math.max(48, rect.left + rect.width / 2)),
                     y: Math.max(48, rect.top - 8),
                 });
             });
