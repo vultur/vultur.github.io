@@ -47,7 +47,10 @@ export function Timeline({ months }: { months: TimelineEntries }) {
                                     <ul aria-label={`${label}更新的书籍`}>
                                         {entries.map((book) => (
                                             <li key={book.name}>
-                                                <Link href={`/${book.name}`}>
+                                                <Link
+                                                    className="nextra-work-book"
+                                                    href={`/${book.name}`}
+                                                >
                                                     <Image
                                                         alt={`${book.name}封面`}
                                                         height={96}
@@ -61,19 +64,23 @@ export function Timeline({ months }: { months: TimelineEntries }) {
                                                         aria-hidden="true"
                                                         className="nextra-work-rule"
                                                     />
-                                                    <span className="nextra-work-authors">
-                                                        {book.authors.map((author, index) => (
-                                                            <span key={author.name}>
-                                                                {index > 0 && "、"}
+                                                </Link>
+                                                <span className="nextra-work-authors">
+                                                    {book.authors.map((author, index) => (
+                                                        <span key={author.name}>
+                                                            {index > 0 && "、"}
+                                                            <Link
+                                                                href={`/authors#${encodeURIComponent(author.name)}`}
+                                                            >
                                                                 <small>
                                                                     〔{countryLabel(author.country)}
                                                                     〕
                                                                 </small>
                                                                 {author.name}
-                                                            </span>
-                                                        ))}
-                                                    </span>
-                                                </Link>
+                                                            </Link>
+                                                        </span>
+                                                    ))}
+                                                </span>
                                             </li>
                                         ))}
                                     </ul>

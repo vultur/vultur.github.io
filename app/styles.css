@@ -2637,7 +2637,7 @@ a {
     list-style: none;
 }
 
-.nextra-index li a {
+.nextra-index li > a {
     display: grid;
     grid-template-columns: 3rem minmax(0, max-content) minmax(1rem, 1fr) auto;
     align-items: center;
@@ -2647,6 +2647,19 @@ a {
     line-height: 1.55;
     text-decoration: none;
     transition: color 140ms ease;
+}
+
+.nextra-timeline li {
+    display: grid;
+    grid-template-columns: 3rem minmax(0, max-content) minmax(1rem, 1fr) auto;
+    align-items: center;
+    gap: 0.875rem;
+    min-width: 0;
+}
+
+.nextra-timeline li > .nextra-work-book {
+    grid-column: 1 / 4;
+    grid-template-columns: subgrid;
 }
 
 .nextra-index li time {
@@ -2672,6 +2685,15 @@ a {
     margin-right: 0.35em;
     color: var(--spine-line);
     font-size: inherit;
+}
+
+.nextra-work-authors a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.nextra-work-authors a:is(:hover, :focus-visible) {
+    color: var(--ink);
 }
 
 .nextra-index li img {
@@ -2784,7 +2806,8 @@ a {
         box-shadow: 0 calc(-1 * var(--index-header-top)) 0 var(--canvas);
     }
 
-    .nextra-index li a {
+    .nextra-index li > a,
+    .nextra-timeline li {
         grid-template-columns: 2.875rem minmax(0, max-content) minmax(1rem, 1fr) auto;
         gap: 0.8125rem;
     }
@@ -2863,7 +2886,8 @@ a {
         margin-bottom: 3.75rem;
     }
 
-    .nextra-index li a {
+    .nextra-index li > a,
+    .nextra-timeline li {
         grid-template-columns: 2.5rem minmax(0, max-content) minmax(0.625rem, 1fr) auto;
         gap: 0.6875rem;
     }
@@ -2886,22 +2910,22 @@ a {
     }
 }
 
-.nextra-index li a:focus-visible {
+.nextra-index li > a:focus-visible {
     outline: 1px solid var(--spine-line);
     outline-offset: 0.35rem;
 }
 
-.nextra-index li a:is(:hover, :focus-visible) img {
+.nextra-index li > a:is(:hover, :focus-visible) img {
     border-color: var(--spine-line);
     filter: grayscale(1) sepia(0.06) contrast(0.94) brightness(1.02);
     transform: translateX(0.1rem);
 }
 
-.nextra-index li a:is(:hover, :focus-visible) .nextra-work-title {
+.nextra-index li > a:is(:hover, :focus-visible) .nextra-work-title {
     color: var(--muted);
 }
 
-.nextra-index li a:is(:hover, :focus-visible) .nextra-work-rule {
+.nextra-index li > a:is(:hover, :focus-visible) .nextra-work-rule {
     opacity: 1;
 }
 
