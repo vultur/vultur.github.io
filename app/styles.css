@@ -146,6 +146,10 @@ a {
     .nextra-home {
         background: var(--canvas);
     }
+
+    :is(.nextra-home-spine-icon, .nextra-content-footer) img {
+        filter: invert(1) grayscale(1);
+    }
 }
 
 .nextra-home-epigraph {
