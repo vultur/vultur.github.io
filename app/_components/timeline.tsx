@@ -6,19 +6,8 @@ import { countryLabel } from "@/lib/country";
 
 import { BackToTop } from "./top";
 
-const monthFormatter = new Intl.DateTimeFormat("zh-CN", {
-    month: "2-digit",
-    timeZone: "Asia/Shanghai",
-    year: "numeric",
-});
-
 function formatMonth(value: string) {
-    const [year, month] = value.split("-").map(Number);
-    const parts = monthFormatter.formatToParts(new Date(Date.UTC(year, month - 1)));
-    const part = (type: Intl.DateTimeFormatPartTypes) =>
-        parts.find((item) => item.type === type)?.value;
-
-    return `${part("year")}.${part("month")}`;
+    return value.replace("-", ".");
 }
 
 export function Timeline({ months }: { months: TimelineEntries }) {
