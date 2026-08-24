@@ -1150,11 +1150,13 @@ a {
 }
 
 .nextra-content-body mark {
-    background: linear-gradient(
-        transparent 64%,
-        color-mix(in srgb, var(--hairline) 62%, transparent) 64%
-    );
+    background: transparent;
     color: inherit;
+    text-decoration-line: underline;
+    text-decoration-color: color-mix(in srgb, var(--hairline) 62%, transparent);
+    text-decoration-thickness: 0.36em;
+    text-underline-offset: -0.28em;
+    text-decoration-skip-ink: none;
 }
 
 .nextra-content-body u {
@@ -1534,6 +1536,12 @@ a {
     text-indent: 2em;
 }
 
+.is-publication .nextra-content-body > small {
+    display: block;
+    margin: 1em 0;
+    text-indent: 2em;
+}
+
 .is-publication .nextra-content-body article {
     margin: 2em 0;
     color: var(--reading-ink);
@@ -1550,6 +1558,12 @@ a {
     display: block;
     margin: 0.72em 0;
     color: inherit;
+    text-indent: 2em;
+}
+
+.is-publication .nextra-content-body article > small {
+    display: block;
+    margin: 0.72em 0;
     text-indent: 2em;
 }
 
