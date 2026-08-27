@@ -1834,11 +1834,12 @@ a {
     font-size: 10px;
     font-family: var(--sans);
     text-align: right;
+    white-space: nowrap;
 }
 
 .nextra-share-country {
     margin-right: 0.35em;
-    color: var(--share-muted);
+    color: rgb(36 34 31 / 28%);
 }
 
 .nextra-share-content {
