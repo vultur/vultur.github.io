@@ -1830,7 +1830,7 @@ a {
 }
 
 .nextra-share-source p:last-child {
-    color: var(--share-muted);
+    color: var(--muted);
     font-size: 10px;
     font-family: var(--sans);
     text-align: right;
@@ -1839,7 +1839,7 @@ a {
 
 .nextra-share-country {
     margin-right: 0.35em;
-    color: rgb(36 34 31 / 28%);
+    color: var(--spine-line);
 }
 
 .nextra-share-content {
