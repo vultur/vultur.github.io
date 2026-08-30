@@ -12,6 +12,8 @@ export type ShareAuthor = {
 
 export type ShareData = {
     authors: ShareAuthor[];
+    date?: string;
+    indexed?: boolean;
     page: Excerpt;
     pageCount: number;
     pageNumber: number;
@@ -31,28 +33,36 @@ export function ShareCard({
     showPagination?: boolean;
 }) {
     const length = data.page.text.length;
+    const isIndexed = data.indexed !== false;
+    const thresholds = data.portrait
+        ? { compact: 190, dense: 280, ultra: 410, max: 520 }
+        : { compact: 240, dense: 360, ultra: 520, max: 680 };
     const density =
-        length > 410
-            ? "is-ultra-dense"
-            : length > 280
-              ? "is-dense"
-              : length > 190
-                ? "is-compact"
-                : undefined;
+        length > thresholds.max
+            ? "is-max-dense"
+            : length > thresholds.ultra
+              ? "is-ultra-dense"
+              : length > thresholds.dense
+                ? "is-dense"
+                : length > thresholds.compact
+                  ? "is-compact"
+                  : undefined;
+    const title = isIndexed ? `《${data.title}》` : `「${data.title}」`;
+    const source = isIndexed
+        ? data.authors.map((author, index) => (
+              <span key={author.name}>
+                  {index > 0 && "、"}
+                  <span className="nextra-share-country">〔{author.country}〕</span>
+                  {author.name}
+              </span>
+          ))
+        : data.date;
 
     return (
         <div className={["nextra-share-card", density].filter(Boolean).join(" ")} ref={ref}>
             <header className="nextra-share-source">
-                <p>《{data.title}》</p>
-                <p>
-                    {data.authors.map((author, index) => (
-                        <span key={author.name}>
-                            {index > 0 && "、"}
-                            <span className="nextra-share-country">〔{author.country}〕</span>
-                            {author.name}
-                        </span>
-                    ))}
-                </p>
+                <p>{title}</p>
+                <p>{source}</p>
             </header>
             <div className={`nextra-share-content${data.portrait ? " has-portrait" : ""}`}>
                 {data.portrait && (

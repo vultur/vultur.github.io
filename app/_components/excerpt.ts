@@ -4,6 +4,7 @@ export type Excerpt = {
 };
 
 const selector = "h2,h3,h4,p,blockquote,ul,ol,hr,article";
+const maxPageLength = 680;
 const allowedTags = new Set([
     "BLOCKQUOTE",
     "BR",
@@ -98,18 +99,26 @@ export function parseSelection(range: Range, root: HTMLElement): Excerpt[] {
     const pages: Excerpt[] = [];
     let chapter: Excerpt | undefined;
 
+    function appendPage(page: Excerpt) {
+        if (page.text.trim()) pages.push(page);
+    }
+
     for (const block of blocks) {
         if (block.heading) {
-            if (chapter) pages.push(chapter);
+            if (chapter) appendPage(chapter);
             chapter = { html: block.html, text: block.text };
         } else if (chapter) {
+            if (chapter.text.length + block.text.length > maxPageLength) {
+                appendPage(chapter);
+                chapter = { html: "", text: "" };
+            }
             chapter.html += block.html;
-            chapter.text += `\n\n${block.text}`;
+            chapter.text = chapter.text ? `${chapter.text}\n\n${block.text}` : block.text;
         } else {
-            pages.push({ html: block.html, text: block.text });
+            appendPage({ html: block.html, text: block.text });
         }
     }
 
-    if (chapter) pages.push(chapter);
+    if (chapter) appendPage(chapter);
     return pages;
 }

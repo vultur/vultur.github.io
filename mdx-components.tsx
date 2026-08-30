@@ -27,6 +27,12 @@ const dateFormatter = new Intl.DateTimeFormat("zh-CN", {
     dateStyle: "medium",
     timeZone: "Asia/Shanghai",
 });
+const shareDateFormatter = new Intl.DateTimeFormat("en-CA", {
+    day: "2-digit",
+    month: "2-digit",
+    timeZone: "Asia/Shanghai",
+    year: "numeric",
+});
 
 type AuthorMetadata = {
     country?: string;
@@ -36,6 +42,7 @@ type AuthorMetadata = {
 type PageMetadata = {
     authors?: unknown;
     cover?: boolean;
+    index?: boolean;
     portrait?: boolean;
     published?: number;
     timestamp?: number;
@@ -112,6 +119,7 @@ const ContentWrapper: MDXWrapper = ({ children, metadata, sourceCode, toc }) => 
     const headings = toc.filter((heading) => heading.depth === 2);
     const showToc = page.toc !== false && headings.length >= 3;
     const isEmpty = isPublication && !hasBody(sourceCode);
+    const isIndexed = page.index !== false;
     const className = [
         "nextra-content",
         "is-reading",
@@ -122,6 +130,11 @@ const ContentWrapper: MDXWrapper = ({ children, metadata, sourceCode, toc }) => 
         .join(" ");
     const timestamp = page.timestamp;
     const updated = timestamp ? dateFormatter.format(timestamp) : "";
+    const shareDate = timestamp
+        ? shareDateFormatter.format(timestamp).replaceAll("-", "/")
+        : page.published
+          ? `${page.published}/00/00`
+          : undefined;
 
     return (
         <main className={className} id="main-content">
@@ -195,7 +208,9 @@ const ContentWrapper: MDXWrapper = ({ children, metadata, sourceCode, toc }) => 
                         country: countryLabel(country),
                         name,
                     }))}
-                    portrait={hasPortrait ? authorPortrait : undefined}
+                    date={shareDate}
+                    indexed={isIndexed}
+                    portrait={isIndexed && hasPortrait ? authorPortrait : undefined}
                     title={title}
                 />
             )}

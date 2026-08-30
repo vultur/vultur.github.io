@@ -32,6 +32,7 @@ type ContentAuthor = { country?: string; name: string };
 
 type ContentMetadata = {
     authors?: ContentAuthor | ContentAuthor[];
+    index?: boolean;
     published?: number;
     timestamp?: number;
     title?: string;
@@ -82,7 +83,7 @@ export async function getBooks(): Promise<Book[]> {
     const [content, timestamps] = await Promise.all([readContent("books"), getTimestamps()]);
 
     return content
-        .filter(({ name }) => name !== "黑白之外")
+        .filter(({ frontMatter }) => frontMatter?.index !== false)
         .map(({ frontMatter, name }) => {
             const value = frontMatter?.authors;
             const authors = value ? (Array.isArray(value) ? value : [value]) : [];

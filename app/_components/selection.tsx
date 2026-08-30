@@ -16,6 +16,8 @@ import { shareCardBackground, ShareCard, ShareCardPreview, type ShareAuthor } fr
 
 type SelectionActionsProps = {
     authors: ShareAuthor[];
+    date?: string;
+    indexed?: boolean;
     portrait?: string;
     title: string;
 };
@@ -48,7 +50,13 @@ function safeFilename(value: string) {
     return value.replace(/[\\/:*?"<>|]/g, "-");
 }
 
-export function SelectionActions({ authors, portrait, title }: SelectionActionsProps) {
+export function SelectionActions({
+    authors,
+    date,
+    indexed,
+    portrait,
+    title,
+}: SelectionActionsProps) {
     const dialogRef = useRef<HTMLDialogElement>(null);
     const exportRefs = useRef<Array<HTMLDivElement | null>>([]);
     const touchStartRef = useRef(0);
@@ -60,6 +68,8 @@ export function SelectionActions({ authors, portrait, title }: SelectionActionsP
 
     const cards = pages.map((page, index) => ({
         authors,
+        date,
+        indexed,
         page,
         pageCount: pages.length,
         pageNumber: index + 1,
@@ -161,10 +171,6 @@ export function SelectionActions({ authors, portrait, title }: SelectionActionsP
         selection.removeAllRanges();
         const nextPages = parseSelection(range, root);
         if (nextPages.length === 0) return;
-        if (nextPages.some((page) => page.text.length > 650)) {
-            window.alert("单个章节内容过长，请缩短选择");
-            return;
-        }
 
         setCurrent(0);
         setPages(nextPages);
@@ -220,7 +226,8 @@ export function SelectionActions({ authors, portrait, title }: SelectionActionsP
 
             urls.forEach((url, index) => {
                 const anchor = document.createElement("a");
-                anchor.download = `${safeFilename(`黑白之外-《${title}》`)}-${index + 1}.png`;
+                const markedTitle = indexed === false ? `「${title}」` : `《${title}》`;
+                anchor.download = `${safeFilename(`黑白之外-${markedTitle}`)}-${index + 1}.png`;
                 anchor.href = url;
                 anchor.click();
                 window.setTimeout(() => URL.revokeObjectURL(url), 3000);
