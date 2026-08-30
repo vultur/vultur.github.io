@@ -50,6 +50,10 @@ function safeFilename(value: string) {
     return value.replace(/[\\/:*?"<>|]/g, "-");
 }
 
+function wait(ms: number) {
+    return new Promise((resolve) => window.setTimeout(resolve, ms));
+}
+
 export function SelectionActions({
     authors,
     date,
@@ -209,29 +213,28 @@ export function SelectionActions({
 
         try {
             await document.fonts.ready;
-            const urls = await Promise.all(
-                exportRefs.current.slice(0, cards.length).map(async (node, index) => {
-                    if (!node) throw new Error(`Missing export card ${index + 1}`);
-                    const blob = await toBlob(node, {
-                        backgroundColor: shareCardBackground,
-                        cacheBust: true,
-                        height: 960,
-                        pixelRatio: 2,
-                        width: 540,
-                    });
-                    if (!blob) throw new Error(`Unable to render card ${index + 1}`);
-                    return URL.createObjectURL(blob);
-                }),
-            );
+            const nodes = exportRefs.current.slice(0, cards.length);
 
-            urls.forEach((url, index) => {
+            for (const [index, node] of nodes.entries()) {
+                if (!node) throw new Error(`Missing export card ${index + 1}`);
+                const blob = await toBlob(node, {
+                    backgroundColor: shareCardBackground,
+                    cacheBust: true,
+                    height: 960,
+                    pixelRatio: 2,
+                    width: 540,
+                });
+                if (!blob) throw new Error(`Unable to render card ${index + 1}`);
+
+                const url = URL.createObjectURL(blob);
                 const anchor = document.createElement("a");
                 const markedTitle = indexed === false ? `「${title}」` : `《${title}》`;
                 anchor.download = `${safeFilename(`黑白之外-${markedTitle}`)}-${index + 1}.png`;
                 anchor.href = url;
                 anchor.click();
                 window.setTimeout(() => URL.revokeObjectURL(url), 3000);
-            });
+                if (index < nodes.length - 1) await wait(280);
+            }
         } finally {
             setSaving(false);
         }
