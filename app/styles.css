@@ -1025,6 +1025,12 @@ a {
     text-wrap: pretty;
 }
 
+.is-reading .nextra-content-body > p,
+.is-reading .nextra-content-body article > p {
+    text-align: justify;
+    text-align-last: left;
+}
+
 .nextra-content-body .nextra-content-empty {
     margin: 5rem 0;
     color: var(--muted);
